@@ -33,8 +33,11 @@
         };
     });
     angular.module('app.core').config(function($authProvider) {
-        $authProvider.loginUrl = "http://localhost/auth/signin";
-        $authProvider.signupUrl = "http://localhost/auth/signup";
+        var serverUrl = config.restApi.protocol + '://' + config.restApi.host + ':' + config.restApi.port + '/' + config.restApi.authPath;
+        $authProvider.loginUrl = serverUrl + "/signin";
+        $authProvider.signupUrl = serverUrl + "/signup";
+        $authProvider.loginRedirect = '/myProfile/view';
+        $authProvider.logoutRedirect = '/connections';
         $authProvider.tokenName = "token";
         $authProvider.tokenPrefix = "myAprofeApp";
     });

@@ -5,52 +5,60 @@
  * @description Controller for the top navigation bar in the application
  */
 
-(function(){
-  'use strict';
+(function() {
+    'use strict';
 
-  angular
-    .module('app.shell')
-    .controller('TopNavBar', TopNavBar);
+    angular
+            .module('app.shell')
+            .controller('TopNavBar', TopNavBar);
 
-  /* @ngInject */
-  function TopNavBar(auth, $state, navigation){
-    var vm = this;
+    /* @ngInject */
+    function TopNavBar(auth, $state, navigation, $auth) {
+        var vm = this;
+        
+        vm.user = navigation.getUserDp();
+        vm.navStates = [];
+console.log('entro')
+        vm.login = login;
+        vm.isBannerVisible = navigation.getMarketingBannerStatus;
+        vm.isLoggedIn = isLoggedIn;
+        
 
-    vm.login = login;
-    vm.navStates = [];
-    vm.isBannerVisible = navigation.getMarketingBannerStatus;
-    init();
+        init();
+        
+        /////////////////////
 
-    /////////////////////
+        /**
+         * @ngdoc method
+         * @name init
+         * @description init function call, sets the navigational states array
+         */
 
-    /**
-     * @ngdoc method
-     * @name init
-     * @description init function call, sets the navigational states array
-     */
+        function init() {
+            $state.get()
+                    .forEach(function(state) {
+                if (state.nav === 'top') {
+                    vm.navStates.push(state);
+                }
+            });
+        }
 
-    function init(){
-      $state.get()
-        .forEach(function(state){
-          if(state.nav === 'top'){
-           vm.navStates.push(state);
-          }
-        });
+        /**
+         * @ngdoc method
+         * @name login
+         * @description Opens the login modal
+         */
+
+        function login() {
+            auth.login()
+            .then(function(res) {
+                navigation.setUserDp(res.data.data.user)
+            }, function(reason) {
+
+            });
+        }
+        function isLoggedIn() {
+            return $auth.isAuthenticated();
+        }
     }
-
-    /**
-     * @ngdoc method
-     * @name login
-     * @description Opens the login modal
-     */
-
-    function login(){
-      auth.login()
-        .then(function(reason){
-
-        }, function(reason){
-
-        });
-    }
-  }
 }());

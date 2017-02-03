@@ -1,53 +1,64 @@
 <div class="cm-modalTitle">
-  <span>Sign in</span>
+    <span>Sign in</span>
 </div>
 <div class="clearfix cm-doublePanelModalSection">
-  <!--div class="cm-left">
-    <a class="cm-signInSocialBtn cm-twitter"><i
-      class="fa fa-twitter"></i><span>Sign in with Twitter</span></a>
-    <a class="cm-signInSocialBtn cm-facebook"><i
-      class="fa fa-facebook"></i><span>Sign in with Facebook</span></a>
-    <a class="cm-signInSocialBtn cm-googlePlus"><i
-      class="fa fa-google-plus"></i><span>Sign in with Google+</span></a>
-  </div-->
-  <div class="">
-    <!--div class="cm-orSeperator">OR</div-->
-    <form name="signIn" novalidate>
-      <div class="cm-form">
-        <div class="form-group">
-          <label for="cm-username">Username</label>
-          <div class="cm-formControlWrap">
-            <input name="username" required type="text" class="form-control" id="cm-username" ng-model="vm.user.username" ng-minlength="6" cm-field-valid>
-            <ng-messages for="signIn.username.$error" ng-if="signIn.username.$dirty">
-              <div ng-message="minlength">Your username is too short</div>
-              <div ng-message="required">Your valid username is required</div>
-            </ng-messages>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="cm-password">Password</label>
-          <div class="cm-formControlWrap">
-            <input name="password" required type="password" class="form-control" id="cm-password" ng-model="vm.user.password" ng-minlength="6" cm-field-valid>
-            <ng-messages for="signIn.password.$error" ng-if="signIn.password.$dirty">
-                <div ng-message="minlength">Your password is too short</div>
-                <div ng-message="required">Your valid password is required</div>
-            </ng-messages>
-          </div>
-        </div>
-        <div class="checkbox form-group">
-          <label>
-            <input type="checkbox"> Keep me signed in.
-            <span class="glyphicon glyphicon-ok"></span>
-          </label>
-        </div>
-        <br>
-        </div>
-        <br>
-        <div class="cm-btnLinkAlign">
-          <button type="submit" class="btn cm-cmBtn cm-btnMd" ng-click="">Sign In</button>
-          <a class="cm-simpleLink" ng-click="vm.setActiveState('forgotPassword')">Forgot Username or Password?</a>
-        </div>
-      </div>
-    </form>
-  </div>
+    <!--div class="cm-left">
+      <a class="cm-signInSocialBtn cm-twitter"><i
+        class="fa fa-twitter"></i><span>Sign in with Twitter</span></a>
+      <a class="cm-signInSocialBtn cm-facebook"><i
+        class="fa fa-facebook"></i><span>Sign in with Facebook</span></a>
+      <a class="cm-signInSocialBtn cm-googlePlus"><i
+        class="fa fa-google-plus"></i><span>Sign in with Google+</span></a>
+    </div-->
+    <div class="">
+        <!--div class="cm-orSeperator">OR</div-->
+        <form name="signIn" novalidate>
+            <div class="cm-form">
+                <div class="form-group">
+                    <label for="cm-username">Cedula</label>
+                    <div class="cm-formControlWrap">
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <ui-select name="tipoCi" on-select="vm.tipoCedulaSelected()" ng-model="vm.tipoCedula" class="cm-customSelectFilter">
+                                    <ui-select-match >{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices repeat="list in vm.tipoCedulaCollection | orderBy: 'name' | filter: {name: $select.search}">
+                                        <div  ng-bind="list.name"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <input name="ci" pattern="[0-9]*" required type="text" class="form-control" id="cm-ci" ng-model="vm.cedula" ng-minlength="6" cm-field-valid>
+                            <ng-messages for="signIn.ci.$error" ng-if="signIn.ci.$dirty">
+                                <div ng-message="minlength">Your username is too short</div>
+                                <div ng-message="required">Your valid username is required</div>
+                                <div ng-message="pattern">Cedula Invalida</div>
+                            </ng-messages>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cm-password">Password</label>
+                    <div class="cm-formControlWrap">
+                        <input name="password" required type="password" class="form-control" id="cm-password" ng-model="vm.user.password" ng-minlength="6" cm-field-valid>
+                        <ng-messages for="signIn.password.$error" ng-if="signIn.password.$dirty">
+                            <div ng-message="minlength">Your password is too short</div>
+                            <div ng-message="required">Your valid password is required</div>
+                        </ng-messages>
+                    </div>
+                </div>
+                <div class="checkbox form-group">
+                    <label>
+                        <input type="checkbox"> Keep me signed in.
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </label>
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="cm-btnLinkAlign">
+                <button type="submit" class="btn cm-cmBtn cm-btnMd" ng-click="vm.login()">Sign In</button>
+                <a class="cm-simpleLink" ng-click="vm.setActiveState('forgotPassword')">Forgot Username or Password?</a>
+            </div>
+    </div>
+</form>
+</div>
 </div>

@@ -566,6 +566,9 @@
 .cm-filterBlockAddBtn2.ng-enter-active,.cm-filterBlockAddBtn.ng-enter-active {
   opacity:1;
 }
+.modal + .cm-customSelectFilter.selectize-control {
+  z-index: 1051;
+}
 .cm-customSelectFilter.selectize-control{
   display:inline-block;
   vertical-align: middle;

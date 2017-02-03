@@ -12,7 +12,7 @@
             pageType: '',
             expId: ''
         };
-        var userDp = 'http://static.comicvine.com/uploads/original/11118/111181237/3995061-avatar_dc75_batman.jpg';
+        var user = {};
         function getMarketingBannerStatus(){
             return isMarketingBannerVisible && ($state.$current.url.source === '/connections');
         }
@@ -38,11 +38,11 @@
         }
 
         function getUserDp(){
-            return userDp;
+            return user;
         }
 
-        function setUserDp(Dp){
-            userDp = Dp;
+        function setUserDp(userData){
+            user = userData;
         }
 
         var service = {

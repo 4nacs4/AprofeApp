@@ -6,13 +6,13 @@
             .factory('restApi', restApi);
 
     /* @ngInject */
-    function restApi($http, config) {
+    function restApi($http) {
 
         var serverUrl = config.restApi.protocol + '://' + config.restApi.host + ':' + config.restApi.port + '/' + config.restApi.apiPath;
         var service = {
-            gerAllUsersData: gerAllUsersData,
             getSingleExperience: getSingleExperience,
-            getExperienceInviteList: getExperienceInviteList
+            getExperienceInviteList: getExperienceInviteList,
+            getUserProfile: getUserProfile
         };
 
         return service;
@@ -20,8 +20,8 @@
         function getSingleExperience(experienceId) {
             return $http.get('datastore/singleExperience.json');
         }
-        function gerAllUsersData() {
-            return $http.get(serverUrl + '/userdata');
+        function getUserProfile(id) {
+            return $http.get(serverUrl + '/profile/' + id);
         }
 
         function getExperienceInviteList() {

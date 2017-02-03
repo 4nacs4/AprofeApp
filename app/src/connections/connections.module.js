@@ -22,11 +22,12 @@
         title: 'Connections',
         nav: 'top',
         backdrop: backdrop.clearWhite,
+        isPublic: true,
         views: {
           'content@shell':{
             templateUrl:'src/connections/home.html',
             controller: 'Home as vm'
-          }
+          },
         }
       })
       .state('shell.connections.profile', {

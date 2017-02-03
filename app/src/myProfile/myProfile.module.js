@@ -64,7 +64,8 @@
             controller: 'messageSubNavBar as vm'
           },
           'topNavBar@shell': {
-              templateUrl: 'src/shell/messageTopNavBar.html'
+              templateUrl: 'src/shell/TopNavBar.html',
+               controller: 'TopNavBar as vm'
           }
         }
      }).state('shell.parentDashboard',{
