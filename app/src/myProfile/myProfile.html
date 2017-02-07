@@ -6,40 +6,30 @@
         </div>
         <div class="cm-profileBio">
             <div class="cm-profileBioHeader">
+                <div ng-if="!vm.profile.status" class="alert alert-warning">
+                    <strong>Alerta!</strong> Debe completar el proceso de afiliacion!.
+                </div>
                 <div class="cm-profileBioTitleWrap">
-                    <div class="cm-NameTitle">Janice A</div>
+                    <div class="cm-NameTitle">{{vm.profile.displayName}}</div>
                     <div class="cm-residenceArea">SEATTLE, WA, USA</div>
                 </div>
                 <a ng-click="vm.editProfile()" class="cm-editProfileLink"><i class="fa fa-pencil"></i> Edit Profile</a>
-                <div class="form-group cm-switchBoxWrap">
+                <!--div class="form-group cm-switchBoxWrap">
                     <div class="checkbox cm-switchCheckbox">
                         <label>
                             <input type="checkbox"> Available for Matching
                             <div class="cm-switchBox"></div>
                         </label>
                     </div>
-                </div>
+                </div-->
             </div>
             <div class="cm-profileBioWrap">
                 <div class="row">
                     <div class="col-sm-6 col-xs-6">
-                        <div class="cm-bioRow cm-countryRow"><div class="cm-bioLabel">Country</div><div class="cm-bioEntry"><img ng-src="{{vm.profile.flag}}" class="cm-flag" alt="">{{vm.profile.country}}</div></div>
-                        <div class="cm-bioRow"><div class="cm-bioLabel">GRADE(S) TAUGHT</div><div class="cm-bioEntry">{{vm.profile['grades-taught']}}</div></div>
-                        <div class="cm-bioRow"><div class="cm-bioLabel">AGE OF STUDENTS</div><div class="cm-bioEntry">{{vm.profile.ages.replace(';', ' - ')}}</div></div>
-                        <div class="cm-bioRow"><div class="cm-bioLabel">TYPE OF SCHOOL</div><div class="cm-bioEntry">{{vm.profile.schooltype}}</div></div>
-                        <div class="cm-bioRow"><div class="cm-bioLabel">NAME OF SCHOOL</div><div class="cm-bioEntry">{{vm.profile.schoolname}}</div></div>
-                        <div class="cm-bioRow"><div class="cm-bioLabel">Subject(S)</div><div class="cm-bioEntry">{{vm.subjects}}</div></div>
-                    </div>
-                    <div class="col-sm-6 col-xs-6">
-                        <div class="cm-bioRow"><div class="cm-bioLabel">LANGUAGE(S)</div><div class="cm-bioEntry">{{vm.languages}}</div></div>
-                        <div class="cm-bioRow"><div class="cm-bioLabel">Class Size</div><div class="cm-bioEntry">{{vm.profile['class-size']}}</div></div>
-                        <div class="cm-bioRow"><div class="cm-bioLabel">INTERESTED IN</div><div class="cm-bioEntry">{{vm.profile.interested_in}}</div></div>
-                        <div class="cm-bioRow"><div class="cm-bioLabel">Email Address</div><div class="cm-bioEntry">{{vm.profile.email}}</div></div>
-                        <div class="cm-bioRow"><div class="cm-bioLabel">Skype Name</div><div class="cm-bioEntry">{{vm.profile.skypename}}</div></div>
-                        <div class="cm-bioRow"><div class="cm-bioLabel">Looking for</div><div class="cm-bioEntry">{{vm.profile.looking_for}}</div></div>
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <div class="cm-bioRow cm-aboutRow"><div class="cm-bioLabel">About me</div><div class="cm-bioEntry">{{vm.profile.description}}</div></div>
+                        <div class="cm-bioRow"><div class="cm-bioLabel">Cedula</div><div class="cm-bioEntry">{{vm.profile.id}}</div></div>
+                        <div class="cm-bioRow cm-countryRow"><div class="cm-bioLabel">Nombres</div><div class="cm-bioEntry">{{vm.profile.firstName}}</div></div>
+                        <div class="cm-bioRow"><div class="cm-bioLabel">Apellidos</div><div class="cm-bioEntry">{{vm.profile.lastName}}</div></div>
+                        <div class="cm-bioRow"><div class="cm-bioLabel">Correo</div><div class="cm-bioEntry">{{vm.profile.email}}</div></div>
                     </div>
                 </div>
             </div>

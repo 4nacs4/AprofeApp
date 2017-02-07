@@ -18,7 +18,6 @@
         
         vm.user = navigation.getUserDp();
         vm.navStates = [];
-console.log('entro')
         vm.login = login;
         vm.isBannerVisible = navigation.getMarketingBannerStatus;
         vm.isLoggedIn = isLoggedIn;

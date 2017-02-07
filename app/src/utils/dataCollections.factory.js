@@ -7,27 +7,27 @@
 
     /* @ngInject */
     function dataCollections($http) {
-        var tipoCedulaCollection = [
+        var idTypeCollection = [
             {"id": "V", "name": "V"},
             {"id": "E", "name": "E"},
             {"id": "J", "name": "J"},
             {"id": "G", "name": "G"}
         ];
-        var estadoCivilCollection = [
+        var civilStatusCollection = [
             {"id": "S", "name": "Soltero(a)"},
             {"id": "C", "name": "Casado(a)"},
             {"id": "V", "name": "Viudo(a)"},
             {"id": "X", "name": "Concubino"}
         ];
-        var ciudadCollection = [];
-        var paisCollection = [
+        var cityCollection = [];
+        var countryCollection = [
             {"id": "Venezuela", "name": "Venezuela"}
         ];
-        var viviendaCollection = [
+        var houseTypeCollection = [
             {"id": "Propia", "name": "Propia"},
             {"id": "Alquilada", "name": "Alquilada"}
         ];
-        var celularCollection = [
+        var cellphoneTypeCollection = [
             {"id": "0416", "name": "0416"},
             {"id": "0426", "name": "0426"},
             {"id": "0412", "name": "0412"},
@@ -35,44 +35,44 @@
             {"id": "0424", "name": "0424"}
         ];
         var service = {
-            getTipoCedulaCollection: getTipoCedulaCollection,
-            getEstadoCivilCollection: getEstadoCivilCollection,
-            getEstadoCollection: getEstadoCollection,
-            getPaisCollection: getPaisCollection,
-            getViviendaCollection: getViviendaCollection,
-            getCelularCollection: getCelularCollection,
-            getCiudadCollection: getCiudadCollection,
-            setCiudadCollection: setCiudadCollection
+            getIdTypeCollection: getIdTypeCollection,
+            getCivilStatusCollection: getCivilStatusCollection,
+            getStateCollection: getStateCollection,
+            getCountryCollection: getCountryCollection,
+            getHouseTypeCollection: getHouseTypeCollection,
+            getCellphoneTypeCollection: getCellphoneTypeCollection,
+            getCityCollection: getCityCollection,
+            setCityCollection: setCityCollection
         };
 
         return service;
         //getters
-        function getTipoCedulaCollection() {
-            return tipoCedulaCollection;
+        function getIdTypeCollection() {
+            return idTypeCollection;
         }
-        function getEstadoCivilCollection() {
-            return estadoCivilCollection;
+        function getCivilStatusCollection() {
+            return civilStatusCollection;
         }
-        function getPaisCollection() {
-            return paisCollection;
+        function getCountryCollection() {
+            return countryCollection;
         }
-        function getCiudadCollection() {
-            return ciudadCollection;
+        function getCityCollection() {
+            return cityCollection;
         }
-        function getEstadoCollection() {
+        function getStateCollection() {
             return $http.get('datastore/venezuela.json');
         }
-        function getViviendaCollection() {
-            return viviendaCollection;
+        function getHouseTypeCollection() {
+            return houseTypeCollection;
         }
-        function getCelularCollection() {
-            return celularCollection;
+        function getCellphoneTypeCollection() {
+            return cellphoneTypeCollection;
         }
         
         //setters
-        function setCiudadCollection(estado) {
-            ciudadCollection = estado.ciudades;
-            console.log(estado)
+        function setCityCollection(state) {
+            cityCollection = state.ciudades;
+            console.log(state)
         }
     }
 }());

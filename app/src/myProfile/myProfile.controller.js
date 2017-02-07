@@ -17,7 +17,7 @@
         var vm = this;
         init();
         function init (){
-            vm.profile = profileInfo;
+            vm.profile = navigation.getUserDp();
             vm.isBannerVisible = navigation.getMarketingBannerStatus;
             vm.editProfile = editProfile;
             vm.languages = cmFilters.getFilterStringForm(vm.profile.languages);

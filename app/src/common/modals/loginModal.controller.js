@@ -19,18 +19,18 @@
         vm.itemsPerPage = 40;
         vm.maxSize = 10; //Number of pager buttons to show
         vm.showAvatarList = false;
-        vm.tipoCedulaCollection = dataCollections.getTipoCedulaCollection();
-        vm.tipoCedula = vm.tipoCedulaCollection[0],
+        vm.idTypeCollection = dataCollections.getIdTypeCollection();
+        vm.idType = vm.idTypeCollection[0];
+        vm.idNumber = '';
         vm.user = {
-            tipoCedula: 'V',
-            cedula: '',
-            ci: '',
+            id: '',
             password: '',
             email: '',
             confirmPassword: '',
             firstName:'',
             displayName:'',
             lastName:'',
+            personType:'',
             dob: {
                 month: '',
                 date: '',
@@ -71,7 +71,7 @@
         vm.setActiveState = setActiveState;
         vm.login = login;
         vm.signUp = signUp;
-        vm.tipoCedulaSelected = tipoCedulaSelected;
+        vm.setListValues = setListValues;
         vm.showOnState = showOnState;
         vm.months = [
             {
@@ -167,8 +167,8 @@
                     vm.showForgotPasswordText = true;
                 }, 400);
             }
-            vm.cedula = '';
-            vm.user.ci = '';
+            vm.id = '';
+            vm.user.id = '';
             vm.user.password = '';
             vm.user.email = '';
             vm.user.confirmPassword = '';
@@ -180,30 +180,29 @@
         }
 
         function login() {
-            vm.user.ci = vm.user.tipoCedula + "-" + vm.user.cedula;
+            vm.setListValues();
             $auth.login(vm.user)
             .then(function(res) {
                 $modalInstance.close(res);
             })
-            .catch (function(response) {
-                console.log(response)
+            .catch (function(err) {
+                console.log(err)
             });
         }
         function signUp() {
-            vm.user.displayName = vm.user.firstName + " " + vm.user.lastName.substr(0, 1);
-            vm.user.ci = vm.user.tipoCedula + "-" + vm.user.cedula;
-            console.log(vm.user)
+            vm.setListValues();          
             $auth.signup(vm.user)
             .then(function(res) {
                 $modalInstance.close(res);
             })
-            .catch (function(response) {
-                console.log(response)
+            .catch (function(err) {
+                console.log(err)
             });
         }
-        function tipoCedulaSelected(){
-            console.log('entro')
-            vm.user.tipoCedula = vm.tipoCedula.id;
+        function setListValues() {
+            vm.user.personType = vm.idType.id;
+            vm.user.id = vm.idType.id + '-' + vm.idNumber;
+            vm.user.displayName = vm.user.firstName + " " + vm.user.lastName.substr(0, 1);
         }
 
     }

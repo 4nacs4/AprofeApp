@@ -19,15 +19,15 @@
                     <div class="cm-formControlWrap">
                         <div class="input-group">
                             <div class="input-group-btn">
-                                <ui-select name="tipoCi" on-select="vm.tipoCedulaSelected()" ng-model="vm.tipoCedula" class="cm-customSelectFilter">
+                                <ui-select name="idType" on-select="" ng-model="vm.idType" class="cm-customSelectFilter">
                                     <ui-select-match >{{$select.selected.name}}</ui-select-match>
-                                    <ui-select-choices repeat="list in vm.tipoCedulaCollection | orderBy: 'name' | filter: {name: $select.search}">
+                                    <ui-select-choices repeat="list in vm.idTypeCollection | orderBy: 'name' | filter: {name: $select.search}">
                                         <div  ng-bind="list.name"></div>
                                     </ui-select-choices>
                                 </ui-select>
                             </div>
-                            <input name="ci" pattern="[0-9]*" required type="text" class="form-control" id="cm-ci" ng-model="vm.cedula" ng-minlength="6" cm-field-valid>
-                            <ng-messages for="signIn.ci.$error" ng-if="signIn.ci.$dirty">
+                            <input name="id" pattern="[0-9]*" required type="text" class="form-control" id="cm-ci" ng-model="vm.idNumber" ng-minlength="6" cm-field-valid>
+                            <ng-messages for="signIn.id.$error" ng-if="signIn.id.$dirty">
                                 <div ng-message="minlength">Your username is too short</div>
                                 <div ng-message="required">Your valid username is required</div>
                                 <div ng-message="pattern">Cedula Invalida</div>

@@ -10,22 +10,25 @@
 
         var serverUrl = config.restApi.protocol + '://' + config.restApi.host + ':' + config.restApi.port + '/' + config.restApi.apiPath;
         var service = {
-            getSingleExperience: getSingleExperience,
-            getExperienceInviteList: getExperienceInviteList,
-            getUserProfile: getUserProfile
+            //profile
+            getUserProfile: getUserProfile,
+            updateUserProfile: updateUserProfile,
+            //membership
+            createMembership: createMembership           
         };
 
         return service;
 
-        function getSingleExperience(experienceId) {
-            return $http.get('datastore/singleExperience.json');
+        function getUserProfile(_id) {
+            return $http.get(serverUrl + '/profile/' + _id);
         }
-        function getUserProfile(id) {
-            return $http.get(serverUrl + '/profile/' + id);
+        function updateUserProfile(user) {
+            console.log(user);
+            return $http.post(serverUrl + '/profile/update', user);
         }
-
-        function getExperienceInviteList() {
-            return $http.get('datastore/profiles.json');
+        function createMembership(user) {
+            console.log(user);
+            //return $http.post(serverUrl + '/membership/', user);
         }
 
 
